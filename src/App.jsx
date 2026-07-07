@@ -80,7 +80,7 @@ export default function App() {
         </main>
 
         <footer style={{ backgroundColor: '#0f172a', color: '#64748b', textAlign: 'center', padding: '20px', fontSize: '13px', borderTop: '1px solid #1e293b' }}>
-          <p style={{ margin: 0 }}>© 2026 Academic Medical-AI Prototype. Designed for Clinical Decision Support Training.</p>
+          <p style={{ margin: 0 }}>© 2026 Medical-AI Prototype. Designed for Clinical Decision Support Training.</p>
         </footer>
 
       </div>
