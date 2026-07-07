@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5400";
 
 export default function ReportScanner() {
   const [file, setFile] = useState(null);
@@ -62,7 +63,7 @@ const handleAnalyzeReport = async () => {
   formData.append("file", file);
 
   try {
-    const response = await fetch('http://localhost:5400/api/scan', {
+    const response = await fetch(`${API_BASE_URL}/api/scan`, {
       method: 'POST',
       body: formData // Content-Type header left blank purposefully so browser auto-injects boundary parameters
     });

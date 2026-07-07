@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5400";
 
 export default function PatientDiagnosis() {
   const [formData, setFormData] = useState({
@@ -23,13 +24,15 @@ export default function PatientDiagnosis() {
     setFormData({ ...formData, [name]: value });
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setAiResponse(null);
 
     try {
-      const response = await fetch('http://localhost:5400/api/diagnose', {
+      const response = await fetch(`${API_BASE_URL}/api/diagnose`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

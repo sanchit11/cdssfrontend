@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5400";
 
 export default function BloodReportAnalyzer() {
   const [file, setFile] = useState(null);
@@ -6,6 +7,7 @@ export default function BloodReportAnalyzer() {
   const [analyzing, setAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState(null);
   const fileInputRef = useRef(null);
+  
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ export default function BloodReportAnalyzer() {
     }
   };
 
+
 const handleAnalyze = async () => {
   // 1. Guard clause: Ensure a file actually exists before sending the network request
   if (!file) {
@@ -47,7 +50,7 @@ const handleAnalyze = async () => {
 
   try {
     // 4. Dispatch asynchronous HTTP POST request to the custom blood analysis route
-    const response = await fetch('http://localhost:5400/api/analyze-blood-report', {
+    const response = await fetch(`${API_BASE_URL}/api/analyze-blood-report`, {
       method: 'POST',
       body: formData
       // CRITICAL NOTE: Do NOT add a 'Content-Type': 'application/json' header here. 
